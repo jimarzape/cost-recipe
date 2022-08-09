@@ -17,7 +17,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $data['_order'] = Order::orderBy('status')->with('customer','items')->paginate(20);
+        $data['_order'] = Order::orderBy('status')->orderBy('date_ordered','asc')->with('customer','items')->paginate(20);
         return view('orders.index', $data);
     }
 
