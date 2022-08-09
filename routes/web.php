@@ -24,8 +24,8 @@ Auth::routes(['verify' => true]);
 // Auth::routes();
 
 Route::group(['middleware' => ['web', 'auth']], function () {
-    Route::get('/', 'RecipeController@index');
-    Route::get('/home', 'RecipeController@index')->name('recipe');
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/recipe', 'RecipeController@index')->name('recipe');
     Route::get('/create', 'RecipeController@create')->name('recipe.create');
     Route::post('/store', 'RecipeController@store')->name('recipe.store');
     Route::get('/view/{id}', 'RecipeController@show')->name('recipe.view');

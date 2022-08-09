@@ -17,7 +17,7 @@ class RecipeController extends Controller
     public function index()
     {
         $data['_recipe'] = Recipe::paginate(20);
-        return view('dashboard', $data);
+        return view('recipe', $data);
     }
 
     /**
