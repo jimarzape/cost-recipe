@@ -33,7 +33,7 @@ $status = array(
                         {{$status[$order->status]}}
                     </td>
                     <td>
-                        <ul class="pl-0">
+                        <ul class="">
                             @foreach($order->items as $items)
                             <li>{{$items->recipe->name}} - {{$items->qty}}</li>
                             @endforeach
