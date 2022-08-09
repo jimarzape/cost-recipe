@@ -27,6 +27,7 @@
                         <option value="0">Pending</option>
                         <option value="1">Paid</option>
                         <option value="2">Delivered</option>
+                        <option value="3">Cancelled</option>
                     </select>
                 </div>
                 <div class="form-group">

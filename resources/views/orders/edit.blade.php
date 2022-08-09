@@ -27,6 +27,7 @@
                         <option value="0" {{$order->status == 0 ? 'selected="selected"' : ''}}>Pending</option>
                         <option value="1" {{$order->status == 1 ? 'selected="selected"' : ''}}>Paid</option>
                         <option value="2" {{$order->status == 2 ? 'selected="selected"' : ''}}>Delivered</option>
+                        <option value="3" {{$order->status == 3 ? 'selected="selected"' : ''}}>Cancelled</option>
                     </select>
                 </div>
                 <div class="form-group">
