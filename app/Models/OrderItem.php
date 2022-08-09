@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class OrderItem extends Model
 {
     use SoftDeletes;
+
+    public function recipe()
+    {
+        return $this->belongsTo('App\Models\Recipe', 'recipe_id', 'id');
+    }
 }

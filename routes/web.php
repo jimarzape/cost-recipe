@@ -39,6 +39,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::post('/customers/update/{id}', 'CustomerController@update')->name('customers.update');
 
     Route::get('/orders', 'OrderController@index')->name('orders');
+    Route::get('/orders/create', 'OrderController@create')->name('orders.create');
+    Route::post('/orders/store', 'OrderController@store')->name('orders.store');
+    Route::get('/orders/edit/{id}', 'OrderController@edit')->name('orders.edit');
+    Route::post('/orders/update/{id}', 'OrderController@update')->name('orders.update');
 
     Route::get('/items', 'ItemController@index')->name('items');
 });

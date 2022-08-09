@@ -19,4 +19,8 @@ td, th {
   display: inline-block;
 }
 
+.hide {
+  display: none;
+}
+
 /*# sourceMappingURL=custom.css.map */
