@@ -10,7 +10,7 @@
                 <tr>
                     <th>Recipe Name</th>
                     <th>Servings</th>
-                    <th>Costs</th>
+                    <th width="300">Costs</th>
                     <th>SRP (50%)</th>
                     <th class="text-center">Action</th>
                 </tr>
