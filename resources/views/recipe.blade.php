@@ -2,6 +2,7 @@
 
 @section('content')
 <h1 class="dash-title">Tables</h1>
+<a class="btn btn-primary f-right" href="{{route('recipe.create')}}">Create</a>
 <div class="row ">
 
     <div class="col-md-12 table-responsive">

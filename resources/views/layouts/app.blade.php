@@ -24,9 +24,10 @@
         </header>
         <nav class="dash-nav-list">
             <a href="{{ url('/') }}" class="dash-nav-item"><i class="fa fa-home"></i> Dashboard </a>
-            <a href="{{ url('/') }}" class="dash-nav-item"><i class="fa fa-cart-plus"></i> Orders </a>
+            <a href="{{ route('orders') }}" class="dash-nav-item"><i class="fa fa-cart-plus"></i> Orders </a>
             <a href="{{ route('recipe') }}" class="dash-nav-item"><i class="fa fa-star"></i> Recipes </a>
-            <a href="{{ url('/') }}" class="dash-nav-item"><i class="fa fa-clipboard"></i> Item Prices </a>
+            <a href="{{ route('items') }}" class="dash-nav-item"><i class="fa fa-clipboard"></i> Item Prices </a>
+            <a href="{{ route('customers') }}" class="dash-nav-item"><i class="fa fa-users"></i> Customers </a>
         </nav>
     </div>
     <div class="dash-app">
