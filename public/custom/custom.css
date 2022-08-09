@@ -23,4 +23,8 @@ td, th {
   display: none;
 }
 
+.pl-0 {
+  padding-left: 0px !important;
+}
+
 /*# sourceMappingURL=custom.css.map */
