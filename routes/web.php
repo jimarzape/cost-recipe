@@ -17,16 +17,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/', 'RecipeController@index');
-Route::get('/home', 'RecipeController@index')->name('recipe');
 
-Auth::routes();
 
-Route::get('/home', 'RecipeController@index')->name('recipe');
-Route::get('/create', 'RecipeController@create')->name('recipe.create');
-Route::post('/store', 'RecipeController@store')->name('recipe.store');
-Route::get('/view/{id}', 'RecipeController@show')->name('recipe.view');
-Route::get('/edit/{id}', 'RecipeController@edit')->name('recipe.edit');
-Route::post('/update/{id}', 'RecipeController@update')->name('recipe.update');
+// Auth::routes();
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/', 'RecipeController@index');
+    Route::get('/home', 'RecipeController@index')->name('recipe');
+    Route::get('/create', 'RecipeController@create')->name('recipe.create');
+    Route::post('/store', 'RecipeController@store')->name('recipe.store');
+    Route::get('/view/{id}', 'RecipeController@show')->name('recipe.view');
+    Route::get('/edit/{id}', 'RecipeController@edit')->name('recipe.edit');
+    Route::post('/update/{id}', 'RecipeController@update')->name('recipe.update');
+});
+
