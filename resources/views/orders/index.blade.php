@@ -17,7 +17,8 @@ $status = array(
                 <tr>
                     <th>Order #</th>
                     <th>Status</th>
-                    <th>Contact</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
                     <th>Total Items</th>
                     <th></th>
                 </tr>
@@ -32,6 +33,7 @@ $status = array(
                     <td>
                         {{$status[$order->status]}}
                     </td>
+                    <td>{{date('M d, Y', strtotime($order->date_ordered))}}</td>
                     <td>
                         <ul class="">
                             @foreach($order->items as $items)
