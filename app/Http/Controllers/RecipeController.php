@@ -42,6 +42,7 @@ class RecipeController extends Controller
         $recipe->name           = $request->name;
         $recipe->description    = $request->description;
         $recipe->serving_count  = $request->servings;
+        $recipe->srp            = $request->srp;
         $recipe->save();
         $total_cost = 0;
         if($request->has('ingredient'))
@@ -112,6 +113,7 @@ class RecipeController extends Controller
         $recipe->name           = $request->name;
         $recipe->description    = $request->description;
         $recipe->serving_count  = $request->servings;
+        $recipe->srp            = $request->srp;
         $recipe->save();
         $total_cost = 0;
 

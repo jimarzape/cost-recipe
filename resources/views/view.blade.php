@@ -19,12 +19,14 @@
                                 <td>{{$recipe->serving_count}}</td>
                                 <td width="10%">Total cost</td>
                                 <td class="text-right"><span class="f-left">₱</span>{{number_format($recipe->total_cost, 2)}}</td>
+                                <td width="10%">SRP</td>
+                                <td class="text-right"><span class="f-left">₱</span>{{number_format($recipe->srp, 2)}}</td>
                                 <td width="15%">Cost per serving</td>
                                 <td class="text-right"><span class="f-left">₱</span>{{number_format(($recipe->total_cost / $recipe->serving_count), 2)}}</td>
                             </tr>
                             <tr>
                                 <td>Description / Instructions</td>
-                                <td colspan="5">{!!nl2br($recipe->description)!!}</td>
+                                <td colspan="6">{!!nl2br($recipe->description)!!}</td>
                             </tr>
                         </table>
                     </div>

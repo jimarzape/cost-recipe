@@ -17,7 +17,11 @@
                             <input type="text" class="form-control" name="name" value="{{$recipe->name}}" required>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
+                        <label>SRP</label>
+                        <input type="number" class="form-control text-right" value="{{$recipe->srp}}" min="1" name="srp" required />
+                    </div>
+                    <div class="col-md-2">
                         <label>Servings</label>
                         <input type="number" class="form-control text-right" value="{{$recipe->serving_count}}" min="1" name="servings" required />
                     </div>

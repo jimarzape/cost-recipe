@@ -27,8 +27,10 @@ $badge = array(
                     <th>Status</th>
                     <th>Status</th>
                     <th>Order Date</th>
-                    <th>Total Items</th>
+                    <th>Items</th>
                     <th>Total</th>
+                    <th>Cost</th>
+                    <th>Net</th>
                     <th></th>
                 </tr>
             </thead>
@@ -44,19 +46,16 @@ $badge = array(
                     </td>
                     <td>{{date('M d, Y', strtotime($order->date_ordered))}}</td>
                     <td>
-                        @php
-                            $total = 0;
-                        @endphp
+                      
                         <ul class="">
                             @foreach($order->items as $items)
                             <li>{{$items->recipe->name}} - {{$items->qty}}</li>
-                            @php
-                                $total += ($items->qty * $items->srp)
-                            @endphp
                             @endforeach
                         </ul>
                     </td>
-                    <td class="text-right">{{number_format($total, 2)}}</td>
+                    <td class="text-right">{{number_format($order->total_sold, 2)}}</td>
+                    <td class="text-right">{{number_format($order->total_cost, 2)}}</td>
+                    <td class="text-right">{{number_format($order->total_net, 2)}}</td>
                     <td class="text-center">
                         <a class="btn btn-primary btn-sm" href="{{route('orders.edit', $order->id)}}"><i class="fa fa-pencil"></i></a>
                     </td>

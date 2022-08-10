@@ -46,6 +46,9 @@ class OrderController extends Controller
         $order->status          = $request->status;
         $order->remarks         = $request->remarks == null ? '' : $request->remarks;
         $order->date_ordered    = $request->date_ordered;
+        $total_sold = 0;
+        $total_net  = 0;
+        $total_cost = 0;
         $order->save();
         if($request->has('recipe_id'))
         {
@@ -57,17 +60,33 @@ class OrderController extends Controller
                 $data = Recipe::where('id', $recipe)->first();
                 if($data)
                 {
-                    $item = new OrderItem;
-                    $item->orders_id = $order->id;
-                    $item->recipe_id = $recipe;
-                    $item->qty = $qty[$key];
-                    $item->cost = $data->total_cost;
-                    $item->srp = $data->total_cost * 1.5;
+                    $sold   =  $data->srp * $qty[$key];
+                    $cost   = $data->total_cost * $qty[$key];
+                    $net    = $total_sold - $total_net;
+
+                    $total_sold += $sold;
+                    $total_net  += $net;
+                    $total_cost += $cost;
+
+                    $item               = new OrderItem;
+                    $item->orders_id    = $order->id;
+                    $item->recipe_id    = $recipe;
+                    $item->qty          = $qty[$key];
+                    $item->cost         = $data->total_cost;
+                    $item->srp          = $data->srp;
+                    $item->total_sold   = $sold;
+                    $item->total_cost   = $cost;
+                    $item->total_net    = $net;
                     $item->save();
                 }
                 
             }
         }
+
+        $order->total_sold = $total_sold;
+        $order->total_net = $total_net;
+        $order->total_cost = $total_cost;
+        $order->save();
 
         return redirect()->to(route('orders'));
     }
@@ -115,6 +134,12 @@ class OrderController extends Controller
         $order->date_ordered    = $request->date_ordered;
         $order->save();
 
+        
+        $total_sold = 0;
+        $total_net  = 0;
+        $total_cost = 0;
+        $order->save();
+
         OrderItem::where('orders_id',$id)->delete();
         if($request->has('recipe_id'))
         {
@@ -126,17 +151,33 @@ class OrderController extends Controller
                 $data = Recipe::where('id', $recipe)->first();
                 if($data)
                 {
-                    $item = new OrderItem;
-                    $item->orders_id = $order->id;
-                    $item->recipe_id = $recipe;
-                    $item->qty = $qty[$key];
-                    $item->cost = $data->total_cost;
-                    $item->srp = $data->total_cost * 1.5;
+                    $sold   =  $data->srp * $qty[$key];
+                    $cost   = $data->total_cost * $qty[$key];
+                    $net    = $sold - $cost;
+
+                    $total_sold += $sold;
+                    $total_net  += $net;
+                    $total_cost += $cost;
+
+                    $item               = new OrderItem;
+                    $item->orders_id    = $order->id;
+                    $item->recipe_id    = $recipe;
+                    $item->qty          = $qty[$key];
+                    $item->cost         = $data->total_cost;
+                    $item->srp          = $data->srp;
+                    $item->total_sold   = $sold;
+                    $item->total_cost   = $cost;
+                    $item->total_net    = $net;
                     $item->save();
                 }
                 
             }
         }
+        
+        $order->total_sold  = $total_sold;
+        $order->total_net   = $total_net;
+        $order->total_cost  = $total_cost;
+        $order->save();
 
         return redirect()->to(route('orders'));
     }

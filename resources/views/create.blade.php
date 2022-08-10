@@ -17,7 +17,11 @@
                             <input type="text" class="form-control" name="name" required>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
+                        <label>SRP</label>
+                        <input type="number" class="form-control text-right" value="0" min="1" name="srp" required />
+                    </div>
+                    <div class="col-md-2">
                         <label>Servings</label>
                         <input type="number" class="form-control text-right" value="1" min="1" name="servings" required />
                     </div>
