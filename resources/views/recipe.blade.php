@@ -6,7 +6,7 @@
 <div class="row ">
 
     <div class="col-md-12 table-responsive">
-        <table class="table table-condensed table-bordered">
+        <table class="table table-condensed table-bordered table-hover">
             <thead>
                 <tr>
                     <th>Recipe Name</th>

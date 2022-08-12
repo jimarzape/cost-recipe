@@ -20,7 +20,7 @@ $badge = array(
 <a class="btn btn-primary f-right" href="{{route('orders.create')}}">Create</a>
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-condensed table-bordered">
+        <table class="table table-condensed table-bordered  table-hover">
             <thead>
                 <tr>
                     <th>Order #</th>
