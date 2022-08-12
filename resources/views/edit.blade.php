@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-2">
                         <label>SRP</label>
-                        <input type="number" class="form-control text-right" value="{{$recipe->srp}}" min="1" name="srp" required />
+                        <input type="number" class="form-control text-right" value="{{$recipe->srp}}" min="1" step="any" name="srp" required />
                     </div>
                     <div class="col-md-2">
                         <label>Servings</label>
