@@ -62,7 +62,7 @@
                 <div class="spur-card-icon">
                     <i class="fa fa-chart-bar"></i>
                 </div>
-                <div class="spur-card-title"> Bar Chart </div>
+                <div class="spur-card-title"> Best Selling Chart </div>
                 <div class="spur-card-menu">
                     <div class="dropdown show">
                         <a class="spur-card-menu-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
