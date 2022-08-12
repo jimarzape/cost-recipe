@@ -37,11 +37,11 @@ class HomeController extends Controller
                                     ->whereIn('orders.status', array(0))
                                     ->select(\DB::raw('sum(order_items.qty) as open'))
                                     ->first();
-        $data['lists']      = Order::whereIn('orders.status', array(1,2))->with('customer','items')->get();
+        $data['lists']      = Order::whereIn('orders.status', array(0))->with('customer','items')->get();
 
         $data['charts']     = OrderItem::leftjoin('orders','orders.id','order_items.orders_id')
                                         ->leftjoin('recipes','recipes.id','order_items.recipe_id')
-                                        ->whereIn('orders.status', array(1,2))
+                                        ->whereIn('orders.status', array(0,1,2))
                                         ->select(\DB::raw('sum(order_items.qty) as total'),'recipes.name')
                                         ->groupBy('order_items.recipe_id')
                                         ->get();
