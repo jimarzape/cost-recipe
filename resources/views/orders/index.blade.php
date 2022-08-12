@@ -57,6 +57,7 @@ $badge = array(
                     <td class="text-right">{{number_format($order->total_cost, 2)}}</td>
                     <td class="text-right">{{number_format($order->total_net, 2)}}</td>
                     <td class="text-center">
+                        <a class="btn btn-danger btn-sm"><i class="fa fa-print"></i></a>
                         <a class="btn btn-primary btn-sm" href="{{route('orders.edit', $order->id)}}"><i class="fa fa-pencil"></i></a>
                     </td>
                 </tr>

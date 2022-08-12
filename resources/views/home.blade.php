@@ -4,13 +4,13 @@
 <div class="row dash-row">
     <div class="col-xl-4">
         <div class="stats stats-primary">
-            <h3 class="stats-title"> Sign ups </h3>
+            <h3 class="stats-title"> Total Sold </h3>
             <div class="stats-content">
                 <div class="stats-icon">
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="stats-data">
-                    <div class="stats-number">114</div>
+                    <div class="stats-number">{{number_format($sold->qty)}}</div>
                     <div class="stats-change">
                         <span class="stats-percentage">+25%</span>
                         <span class="stats-timeframe">from last month</span>
@@ -27,7 +27,7 @@
                     <i class="fa fa-cart-arrow-down"></i>
                 </div>
                 <div class="stats-data">
-                    <div class="stats-number">$25,541</div>
+                    <div class="stats-number">₱ {{number_format($revenue->total_net, 2)}}</div>
                     <div class="stats-change">
                         <span class="stats-percentage">+17.5%</span>
                         <span class="stats-timeframe">from last month</span>
@@ -38,13 +38,13 @@
     </div>
     <div class="col-xl-4">
         <div class="stats stats-danger">
-            <h3 class="stats-title"> Open tickets </h3>
+            <h3 class="stats-title"> Open Order Items </h3>
             <div class="stats-content">
                 <div class="stats-icon">
-                    <i class="fa fa-phone"></i>
+                    <i class="fa fa-cart-plus"></i>
                 </div>
                 <div class="stats-data">
-                    <div class="stats-number">5</div>
+                    <div class="stats-number">{{number_format($open->open)}}</div>
                 </div>
             </div>
         </div>
