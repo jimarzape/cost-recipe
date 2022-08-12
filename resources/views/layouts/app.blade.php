@@ -12,6 +12,7 @@
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('custom/custom.css?'. time()) }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/font-awesome.min.css?'. time()) }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
 <div class="dash">

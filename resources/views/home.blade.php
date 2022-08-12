@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('css')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<script src="/themes/js/chart-js-config.js"></script>
+@endsection
+
 @section('content')
 <div class="row dash-row">
     <div class="col-xl-4">
@@ -72,15 +77,21 @@
             </div>
             <div class="card-body spur-card-body-chart">
                 <canvas id="spurChartjsBar"></canvas>
+                
                 <script>
+                    var chartLabel = [], chartValue = [];
+                    @foreach($charts as $chart)
+                    chartLabel.push(`{{$chart->name}}`);
+                    chartValue.push(`{{$chart->total}}`);
+                    @endforeach
                     var ctx = document.getElementById("spurChartjsBar").getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                            labels: chartLabel,
                             datasets: [{
                                 label: 'Blue',
-                                data: [12, 19, 3, 5, 2],
+                                data: chartValue,
                                 backgroundColor: window.chartColors.primary,
                                 borderColor: 'transparent'
                             }]
@@ -106,36 +117,24 @@
         <div class="card spur-card">
             <div class="card-header">
                 <div class="spur-card-icon">
-                    <i class="fa fa-bell"></i>
+                    <i class="fa fa-cart-plus"></i>
                 </div>
-                <div class="spur-card-title"> Notifications </div>
+                <div class="spur-card-title"> Order Lists </div>
             </div>
             <div class="card-body ">
                 <div class="notifications">
-                    <a href="#!" class="notification">
+                    @foreach($lists as $list)
+                    <a href="{{route('orders.edit', $list->id)}}" class="notification">
                         <div class="notification-icon">
                             <i class="fa fa-inbox"></i>
                         </div>
-                        <div class="notification-text">New comment</div>
-                        <span class="notification-time">21 days ago</span>
-                    </a>
-                    <a href="#!" class="notification">
-                        <div class="notification-icon">
-                            <i class="fa fa-inbox"></i>
+                        <div class="notification-text">
+                            {{$list->customer->name}} - ({{$list->items->sum('qty')}} item orders)
                         </div>
-                        <div class="notification-text">New comment</div>
-                        <span class="notification-time">21 days ago</span>
+                        <span class="notification-time">{{date('M d, Y',strtotime($list->date_ordered))}}</span>
                     </a>
-                    <a href="#!" class="notification">
-                        <div class="notification-icon">
-                            <i class="fa fa-inbox"></i>
-                        </div>
-                        <div class="notification-text">New comment</div>
-                        <span class="notification-time">21 days ago</span>
-                    </a>
-                    <div class="notifications-show-all">
-                        <a href="#!">Show all</a>
-                    </div>
+                    @endforeach
+                    
                 </div>
             </div>
         </div>
